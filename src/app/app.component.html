@@ -1,0 +1,34 @@
+<div class='container'>
+  <h3 class=''>Kafka messages streaming demo</h3>
+  <div class='messaging'>
+    <div class='inbox_msg'>
+      <div class='inbox_people'>
+        <div class='headind_srch'>
+          <div class='recent_heading'>
+            <h4>Messages</h4>
+          </div>
+        </div>
+        <div id='messages' class='inbox_chat'>
+          <div class='chat_list active_chat' *ngFor="let message of messages">
+            <div class='chat_people'>
+              <div class='chat_img'><img src='{{avatars.get(message.pseudo) || anonymousAvatar}}' alt='pseudo'></div>
+              <div class='chat_ib' *ngIf="message">
+                <h5>{{message.pseudo}}
+                  <span class='chat_date'>
+                    {{message.time.toString().substring(0, 4) + message.time.toLocaleTimeString().substring(0, 5)}}
+                  </span>
+                </h5>
+                <p *ngIf="message.content.length > 55">
+                  {{message.content.substring(0, 45).concat('...')}}
+                </p>
+                <p *ngIf="message.content.length <= 55">
+                  {{message.content}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
